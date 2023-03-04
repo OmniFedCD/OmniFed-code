@@ -1,0 +1,49 @@
+# config
+# dataset configuration
+dataset: local
+x_dims: 19 # dimensions of input data
+prefix: processed
+
+# global parameters
+global_max_epoch: 20
+process_num: 60
+
+# local parameter
+local_max_epoch: 30
+
+# detect model parameters
+model: ConvGRU
+window_size: 50
+z_dims: 30
+encoder_nn_size: None # `None` means that nn_size is `(input_dims // 2, input_dims // 4)`
+deocder_nn_size: None
+valid_step_freq: 200
+batch_size: 32
+alpha: 0
+beta: 1
+get_score_on_dim: True
+
+# cluster model parameters
+cluster_model: AE
+cluster_model_use: full  # full, encoder, decoder
+cluster_window_size: 144
+cluster_z_dims: 30
+cluster_encoder_nn_size: None # `None` means that nn_size is `(input_dims // 2, input_dims // 4)`
+cluster_deocder_nn_size: None
+cluster_distance_threshold: None
+cluster_max_epoch: 20
+cluster_batch_size: 32
+cluster_num: 20
+cluster_method: Hierarchical   
+cluster_distance: Eucli  # Cos, Eucli, Manh
+
+
+# outputs config
+save_dir: model_ext/usad
+restore_dir: None
+result_dir: result_ext/usad
+train_score_filename: train_score.npy
+test_score_filename: test_score.npy
+
+cluster_save_dir: cluster
+cluster_restore_dir: None
